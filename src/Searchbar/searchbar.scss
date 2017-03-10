@@ -1,0 +1,134 @@
+@keyframes shake {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-.1rem, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: translate3d(.1rem, 0, 0);
+  }
+}
+
+.searchbar {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.searchbar__input {
+  padding: .8rem 1rem;
+  padding-left: 3rem;
+  width: 100%;
+  background-color: $color-white;
+  border: .1rem solid $color-light-gray;
+  line-height: 1;
+  margin: 0;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  border-radius: $global-radius;
+  transition: border-color 200ms, box-shadow 300ms ease;
+
+  &--dropdown-opened {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: border-radius 300ms, box-shadow 300ms 200ms ease;
+    box-shadow: 0 -.1rem 1.3rem rgba(0, 0, 0, .06);
+  }
+
+  &:focus {
+    border-color: darken($color-light-gray, 5%);
+  }
+
+  @include placeholder {
+    user-select: none;
+  }
+}
+
+.searchbar__field {
+  position: relative;
+
+  &--error {
+    animation-name: shake;
+    animation-duration: 1000ms;
+  }
+}
+
+.searchbar__item {
+  cursor: pointer;
+  padding: .5rem 1rem;
+
+  &:hover,
+  &--selected {
+    background-color: $color-white-gray;
+  }
+}
+
+.searchbar__dropdown {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  transform: translateY(-100%) skewX(30deg);
+  transition: opacity 300ms 100ms ease-in, transform 350ms ease, box-shadow 200ms 100ms ease;
+  border: .1rem solid darken($color-light-gray, 5%);
+  border-top: 0;
+  background-color: $color-white;
+  box-shadow: 0 .2rem 1.3rem rgba(0, 0, 0, .06);
+  border-bottom-left-radius: $global-radius;
+  border-bottom-right-radius: $global-radius;
+  user-select: none;
+
+  &--opened {
+    opacity: 1;
+    height: auto;
+    transform: translateY(0) skewX(0deg);
+  }
+}
+
+.searchbar__clear {
+  position: absolute;
+  cursor: pointer;
+  right: .5rem;
+  top: calc(50% - 1.1rem);
+  z-index: 3;
+  padding: .5rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  background-color: transparent;
+  border: .1rem solid transparent;
+  border-radius: 2rem;
+  line-height: 1;
+  outline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 200ms ease;
+  user-select: none;
+
+  &:focus,
+  &:hover {
+    background-color: $color-white-gray;
+    border: .1rem solid $color-light-gray;
+  }
+}
+
+.searchbar__nothing {
+  color: $color-blue;
+  padding: .5rem 1rem;
+  cursor: default;
+}
+
+.searchbar__search {
+  position: absolute;
+  top: calc(50% - 1rem);
+  left: 1rem;
+  z-index: 2;
+  cursor: text;
+}
