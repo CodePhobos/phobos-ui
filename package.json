@@ -1,0 +1,20 @@
+{
+  "name": "phobos-ui",
+  "version": "1.0.0",
+  "description": "React components for everyday usage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodePhobos/phobos-ui.git"
+  },
+  "keywords": [],
+  "author": "Vitaly Rtishchev <rtivital@gmail.com> (http://github.com/rtivital)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodePhobos/phobos-ui/issues"
+  },
+  "homepage": "https://github.com/CodePhobos/phobos-ui#readme"
+}
